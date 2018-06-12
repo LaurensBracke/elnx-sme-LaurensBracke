@@ -1,0 +1,41 @@
+# pu004.yml
+---
+
+rhbase_firewall_interfaces:
+  - enp0s3
+  - enp0s8
+
+rhbase_firewall_allow_services:
+  - http
+  - https
+
+mariadb_bind_address: '0.0.0.0'
+
+mariadb_root_password: 'W3FqxYUS'
+
+mariadb_users:
+  - name: laurens
+    password: W3FqxYUS
+    priv: 'wordpress.*:ALL'
+    host: '%'
+
+mariadb_databases:
+  - name: wordpress
+
+httpd_scripting: 'php'
+
+wordpress_database: wordpress
+
+wordpress_user: laurens
+
+wordpress_password: W3FqxYUS
+
+wordpress_plugins:
+  - name: wp-super-cache
+    version: 1.4.5
+wordpress_themes:
+  - name: xcel
+    version: 1.0.9
+
+httpd_SSLCertificateFile:	/etc/pki/tls/certs/lamp.crt
+httpd_SSLCertificateKeyFile: /etc/pki/tls/private/lamp.key

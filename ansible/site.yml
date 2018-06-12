@@ -1,0 +1,60 @@
+# site.yml
+---
+- hosts: pu004 # webserver
+  become: true
+  pre_tasks:
+    - name: Certificaten overplaatsen
+      copy:
+        src: "{{item.src}}"
+        dest: "{{item.dest}}"
+        remote_src: yes
+      with_items:
+        - src: "keys/lamp.crt"
+          dest: "/etc/pki/tls/certs"
+        - src: "keys/lamp.key"
+          dest: "/etc/pki/tls/private/lamp.key"
+  roles:
+    - bertvv.rh-base
+    - bertvv.mariadb
+    - bertvv.httpd
+    - bertvv.wordpress
+
+- hosts: pu001 #DNS-server1
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.bind
+
+- hosts: pu002 #DNS-server2
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.bind
+
+- hosts: pr011 #FTP/SAMBA
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.samba
+    - bertvv.vsftpd
+  post_tasks:
+    - name: ACL Sales
+      acl:
+        path: /srv/samba/sales/
+        etype: group
+        entity: management
+        permissions: rx
+        state: present
+    - name: ACL It
+      acl:
+        path: /srv/samba/it/
+        etype: group
+        entity: management
+        permissions: rx
+        state: present
+
+- hosts: pr001 #DHCP
+  become: true
+  roles:
+    - bertvv.rh-base
+    - bertvv.dhcp

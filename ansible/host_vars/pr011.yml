@@ -1,0 +1,93 @@
+# pr011.yml
+---
+
+rhbase_firewall_allow_services:
+  - samba
+  - ftp
+
+samba_netbios_name: FILES
+samba_server_string: 'Welkom op de Samba-server'
+samba_workgroup: AVALON
+
+samba_load_homes: true
+samba_create_varwww_symlinks: true
+samba_map_to_guest: Never
+
+
+samba_users:
+  - name: alexanderd
+    password: alexanderd
+  - name: anc
+    password: anc
+  - name: benoitp
+    password: benoitp
+  - name: christophev
+    password: christophev
+  - name: elenaa
+    password: elenaa
+  - name: evyt
+    password: evyt
+  - name: krisv
+    password: krisv
+  - name: leend
+    password: leend
+  - name: nehirb
+    password: nehirb
+  - name: stefaanv
+    password: stefaanv
+  - name: stevenh
+    password: stevenh
+  - name: stevenv
+    password: stevenv
+  - name: svena
+    password: svena
+  - name: laurens
+    password: voetbal
+
+samba_shares_root: /srv/samba
+
+samba_shares:
+  - name: management
+    comment: 'share voor management-groep'
+    group: management
+    valid_users: +management
+    write_list: +management
+    directory_mode: 770
+  - name: technical
+    comment: 'share voor technical-groep'
+    group: technical
+    write_list: +technical
+  - name: sales
+    comment: 'share voor sales-groep'
+    group: sales
+    valid_users: +management, +sales
+    write_list: +sales
+    directory_mode: 770
+  - name: it
+    comment: 'share voor it-groep'
+    group: it
+    valid_users: +management, +it
+    write_list: +it
+    directory_mode: 770
+  - name: public
+    comment: 'voor iedere gebruiker'
+    group: public
+    write_list: +public
+
+vsftpd_local_enable: true
+vsftpd_anonymous_enable: false
+vsftpd_local_root: /srv/samba
+
+vsftpd_options:
+  - key: delete_failed_uploads
+    value: 'YES'
+  - key: ftpd_banner
+    value: "Welcome to the FTP service"
+  - key: use_localtime
+    value: 'YES'
+
+#vsftpd_options:
+#  - key: xferlog_enable
+#    value: 'YES'
+#  - key: xferlog_file
+#    value: /var/log/vsftp_xfer.log

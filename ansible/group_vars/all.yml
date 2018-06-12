@@ -1,0 +1,127 @@
+# group_vars/all.yml
+# Variables visible to all nodes
+---
+rhbase_repositories:
+  - epel-release
+
+rhbase_install_packages:
+  - bash-completion
+  - bind-utils
+  - git
+  - nano
+  - tree
+  - vim-enhanced
+  - wget
+  - ftp
+
+rhbase_user_groups:
+  - management
+  - technical
+  - sales
+  - it
+  - public
+
+
+rhbase_users:
+  - name: laurens
+    comment: 'Administrator'
+    password: '$1$1$t.6go1hDMyB4zBqixr0q4/'
+    groups:
+      - wheel
+      - it
+      - public
+  - name: alexanderd
+    comment: 'Alexander De Coninck'
+    password: '$1$1$EcU5ExEm4VTJVDisziEDS0'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: anc
+    comment: 'An Coppens'
+    password: '$1$1$wLhbf2gCmObdjsqY3cdZE1'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: benoitp
+    comment: 'Benoit Pluquet'
+    password: '$1$1$QAwui1jmfDnWwBwel6VNK1'
+    shell: /sbin/nologin
+    groups:
+      - sales
+      - public
+  - name: christophev
+    comment: 'Christophe Van der Meersche'
+    password: '$1$1$.UFAiASiPtVmKtWUuPW.l.'
+    groups:
+      - it
+      - public
+  - name: elenaa
+    comment: 'Elena Andreev'
+    password: '$1$1$.LtHTnikjCLoq3XC2Zcv21'
+    shell: /sbin/nologin
+    groups:
+      - management
+      - public
+  - name: evyt
+    comment: 'Evy Tilleman'
+    password: '$1$1$SKDovize9gUl7lMtHAxiR.'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: krisv
+    comment: 'Kris Vanhaverbeke'
+    password: '$1$1$p/gL1WxI8fyj/5azjntiP1'
+    shell: /sbin/nologin
+    groups:
+      - management
+      - public
+  - name: leend
+    comment: 'Leen De Meester'
+    password: '$1$1$PJ03iDqn4mXOfQoAtlor8.'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: nehirb
+    comment: 'Nehir Başar'
+    password: '$1$1$vJnkXxo/OTekhk08huIUh1'
+    groups:
+      - it
+      - public
+  - name: stefaanv
+    comment: 'Stefaan Vernimmen'
+    password: '$1$1$c/v5.zhpHj8o.BDaW6y7P/'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: stevenh
+    comment: 'Steven Hermans'
+    password: '$1$1$LP8BuSOg.0e1QdFcg2A5z.'
+    shell: /sbin/nologin
+    groups:
+      - management
+      - public
+  - name: stevenv
+    comment: 'Steven Van Daele'
+    password: '$1$1$hYRhDSWqJwMtXOD7vK.mJ/'
+    shell: /sbin/nologin
+    groups:
+      - technical
+      - public
+  - name: svena
+    comment: 'Sven Aerens'
+    password: '$1$1$.AiG7zHtuB.hefMEJkhAn1'
+    shell: /sbin/nologin
+    groups:
+      - sales
+      - public
+
+rhbase_motd: true
+rhbase_ssh_user: laurens
+rhbase_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDtIN5VWlrbZZSbFD0x6Un/1PnhxgLYPS+QSkZxfycZOi4cK/jjXxGhbIL/SutewOCL+uYVpqc5foL4hfVtVR7G0jzW7mYoY3WPdopjEaUx5AZQhL0L+SA6tTPbZDX3YVA6fpGHXhqN3ODnQtFvlk1LY11Iholjo1SsihufoDfDqq3N3fAEBMlHCtPAyI5MpWRlqcI5dBAVSsRSuO9FFAdpK95cGD8guYZd+gLuiH8RynxsPPSHZ2XNHSThvajimgypDUWa13/trDGPr7j98DHYU3xWDuHHXWYvsVJh+zyy0QcbG16kvYvdiMlCkHD/Aj8/rp4P7MmxVjw0QObEy5QP laure@LaurensBracke'
+
+## nog paswoord toevoegen voor users, en ssh-key controleren

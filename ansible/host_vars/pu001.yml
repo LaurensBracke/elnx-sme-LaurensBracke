@@ -1,0 +1,63 @@
+# pu001.yml
+---
+
+rhbase_firewall_allow_services:
+  - dns
+
+bind_zone_name: 'avalon.lan'
+bind_zone_networks:
+  - '172.16'
+  - '192.0.2'
+
+bind_allow_query:
+  - any
+bind_listen_ipv4:
+  - any
+
+bind_zone_name_servers:
+  - pu001
+  - pu002
+
+bind_zone_master_server_ip: 192.0.2.10
+
+bind_zone_hosts:
+  - name: r001
+    ip: 192.0.2.254
+    aliases:
+      - gw
+  - name: pu001
+    ip: 192.0.2.10
+    aliases:
+      - ns1
+  - name: pu002
+    ip: 192.0.2.11
+    aliases:
+      - ns2
+  - name: pu004
+    ip: 192.0.2.50
+    aliases:
+      - www
+  - name: pu003
+    ip: 192.0.2.20
+    aliases:
+      - mail
+  - name: pr001
+    ip: 172.16.0.2
+    aliases:
+      - dhcp
+  - name: pr002
+    ip: 172.16.0.3
+    aliases:
+      - directory
+  - name: pr010
+    ip: 172.16.0.10
+    aliases:
+      - inside
+  - name: pr011
+    ip: 172.16.0.11
+    aliases:
+      - files
+
+bind_zone_mail_servers:
+  - name: pu003
+    preference: 10
